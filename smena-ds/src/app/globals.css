@@ -1,0 +1,300 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ═══════════════════════════════════════════════════
+   @theme inline — maps CSS variables → Tailwind utilities
+   ═══════════════════════════════════════════════════ */
+@theme inline {
+  /* ── shadcn slots (keep as-is) ── */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ── shadcn radius tokens (keep as-is) ── */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* ── Smena semantic colour tokens → Tailwind utilities ── */
+  --color-smena-primary:          var(--smena-primary);
+  --color-smena-primary-hover:    var(--smena-primary-hover);
+  --color-smena-primary-active:   var(--smena-primary-active);
+  --color-smena-primary-bg:       var(--smena-primary-bg);
+  --color-smena-primary-border:   var(--smena-primary-border);
+  --color-smena-text:             var(--smena-text);
+  --color-smena-text-secondary:   var(--smena-text-secondary);
+  --color-smena-text-tertiary:    var(--smena-text-tertiary);
+  --color-smena-text-disabled:    var(--smena-text-disabled);
+  --color-smena-bg-layout:        var(--smena-bg-layout);
+  --color-smena-bg-container:     var(--smena-bg-container);
+  --color-smena-bg-elevated:      var(--smena-bg-elevated);
+  --color-smena-border:           var(--smena-border);
+  --color-smena-border-secondary: var(--smena-border-secondary);
+  --color-smena-fill:             var(--smena-fill);
+  --color-smena-fill-secondary:   var(--smena-fill-secondary);
+  --color-smena-success:          var(--smena-success);
+  --color-smena-success-bg:       var(--smena-success-bg);
+  --color-smena-success-border:   var(--smena-success-border);
+  --color-smena-warning:          var(--smena-warning);
+  --color-smena-warning-bg:       var(--smena-warning-bg);
+  --color-smena-warning-border:   var(--smena-warning-border);
+  --color-smena-error:            var(--smena-error);
+  --color-smena-error-bg:         var(--smena-error-bg);
+  --color-smena-error-border:     var(--smena-error-border);
+  --color-smena-info:             var(--smena-info);
+  --color-smena-info-bg:          var(--smena-info-bg);
+  --color-smena-info-border:      var(--smena-info-border);
+
+  /* ── Smena font ── */
+  --font-sans: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono);
+
+  /* ── Smena border-radius tokens ── */
+  --radius-smena-xs:      2px;
+  --radius-smena-sm:      4px;
+  --radius-smena-default: 6px;
+  --radius-smena-lg:      8px;
+
+  /* ── Smena shadow tokens ── */
+  --shadow-smena-card:     0 1px 2px 0 rgba(0,0,0,0.03), 0 1px 6px -1px rgba(0,0,0,0.02), 0 2px 4px 0 rgba(0,0,0,0.02);
+  --shadow-smena-dropdown: 0 6px 16px 0 rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05);
+  --shadow-smena-modal:    0 6px 16px 0 rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05);
+
+  /* ── Smena typography ── */
+  --text-smena-sm:   12px;
+  --text-smena-base: 14px;
+  --text-smena-lg:   16px;
+  --text-smena-h5:   16px;
+  --text-smena-h4:   20px;
+  --text-smena-h3:   24px;
+  --text-smena-h2:   30px;
+  --text-smena-h1:   38px;
+
+  /* ── Smena spacing tokens ── */
+  --spacing-smena-xxs:  4px;
+  --spacing-smena-xs:   8px;
+  --spacing-smena-sm:   12px;
+  --spacing-smena-base: 16px;
+  --spacing-smena-md:   20px;
+  --spacing-smena-lg:   24px;
+  --spacing-smena-xl:   32px;
+  --spacing-smena-xxl:  48px;
+
+  /* ── Smena control heights ── */
+  --height-control-xs: 16px;
+  --height-control-sm: 24px;
+  --height-control:    32px;
+  --height-control-lg: 40px;
+}
+
+/* ═══════════════════════════════════════════════════
+   :root — CSS custom properties (all layers)
+   ═══════════════════════════════════════════════════ */
+:root {
+  /* ── Layer 1: Primitive palette ── */
+  --smena-blue-1:  #e6f4ff;
+  --smena-blue-2:  #bae0ff;
+  --smena-blue-3:  #91caff;
+  --smena-blue-4:  #69b1ff;
+  --smena-blue-5:  #4096ff;
+  --smena-blue-6:  #1677ff;
+  --smena-blue-7:  #0958d9;
+  --smena-blue-8:  #003eb3;
+  --smena-blue-9:  #00258a;
+  --smena-blue-10: #000e61;
+
+  --smena-gold-1:  #fffbe6;
+  --smena-gold-2:  #fff1b8;
+  --smena-gold-3:  #ffe58f;
+  --smena-gold-4:  #ffd666;
+  --smena-gold-5:  #ffc53d;
+  --smena-gold-6:  #faad14;
+  --smena-gold-7:  #d48806;
+  --smena-gold-8:  #ad6800;
+  --smena-gold-9:  #874d00;
+  --smena-gold-10: #613400;
+
+  --smena-red-1:   #fff1f0;
+  --smena-red-2:   #ffccc7;
+  --smena-red-3:   #ffa39e;
+  --smena-red-4:   #ff7875;
+  --smena-red-5:   #ff4d4f;
+  --smena-red-6:   #f5222d;
+  --smena-red-7:   #cf1322;
+  --smena-red-8:   #a8071a;
+  --smena-red-9:   #820014;
+  --smena-red-10:  #5c0011;
+
+  --smena-green-1: #f6ffed;
+  --smena-green-2: #d9f7be;
+  --smena-green-3: #b7eb8f;
+  --smena-green-4: #95de64;
+  --smena-green-5: #73d13d;
+  --smena-green-6: #52c41a;
+  --smena-green-7: #389e0d;
+  --smena-green-8: #237804;
+  --smena-green-9: #135200;
+  --smena-green-10: #092b00;
+
+  /* ── Layer 2: Semantic tokens ── */
+  --smena-primary:         var(--smena-blue-6);
+  --smena-primary-hover:   var(--smena-blue-5);
+  --smena-primary-active:  var(--smena-blue-7);
+  --smena-primary-bg:      var(--smena-blue-1);
+  --smena-primary-border:  var(--smena-blue-3);
+
+  --smena-text:            rgba(40, 42, 60, 0.88);
+  --smena-text-secondary:  rgba(40, 42, 60, 0.65);
+  --smena-text-tertiary:   rgba(40, 42, 60, 0.45);
+  --smena-text-disabled:   rgba(40, 42, 60, 0.25);
+
+  --smena-bg-layout:       #f5f5f5;
+  --smena-bg-container:    #ffffff;
+  --smena-bg-elevated:     #ffffff;
+
+  --smena-border:          #d9d9d9;
+  --smena-border-secondary:#f0f0f0;
+
+  --smena-fill:            rgba(40, 42, 60, 0.15);
+  --smena-fill-secondary:  rgba(40, 42, 60, 0.06);
+
+  --smena-success:         var(--smena-green-6);
+  --smena-success-bg:      var(--smena-green-1);
+  --smena-success-border:  var(--smena-green-3);
+
+  --smena-warning:         var(--smena-gold-6);
+  --smena-warning-bg:      var(--smena-gold-1);
+  --smena-warning-border:  var(--smena-gold-3);
+
+  --smena-error:           var(--smena-red-5);
+  --smena-error-bg:        var(--smena-red-1);
+  --smena-error-border:    var(--smena-red-2);
+
+  --smena-info:            var(--smena-blue-6);
+  --smena-info-bg:         var(--smena-blue-1);
+  --smena-info-border:     var(--smena-blue-3);
+
+  /* ── Layer 3: Override shadcn slots with Smena brand ── */
+  --radius: 0.375rem;
+  --background: #ffffff;
+  --foreground: rgba(40, 42, 60, 0.88);
+  --card: #ffffff;
+  --card-foreground: rgba(40, 42, 60, 0.88);
+  --popover: #ffffff;
+  --popover-foreground: rgba(40, 42, 60, 0.88);
+  --primary: #1677ff;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f5;
+  --secondary-foreground: rgba(40, 42, 60, 0.88);
+  --muted: #f5f5f5;
+  --muted-foreground: rgba(40, 42, 60, 0.65);
+  --accent: #e6f4ff;
+  --accent-foreground: #0958d9;
+  --destructive: #ff4d4f;
+  --border: #d9d9d9;
+  --input: #d9d9d9;
+  --ring: #1677ff;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: #ffffff;
+  --sidebar-foreground: rgba(40, 42, 60, 0.88);
+  --sidebar-primary: #1677ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e6f4ff;
+  --sidebar-accent-foreground: #0958d9;
+  --sidebar-border: #d9d9d9;
+  --sidebar-ring: #1677ff;
+}
+
+/* ── Dark mode: Layer 2 + shadcn slot overrides ── */
+.dark {
+  --smena-text:            rgba(255, 255, 255, 0.85);
+  --smena-text-secondary:  rgba(255, 255, 255, 0.65);
+  --smena-text-tertiary:   rgba(255, 255, 255, 0.45);
+  --smena-text-disabled:   rgba(255, 255, 255, 0.25);
+
+  --smena-bg-layout:       #161616;
+  --smena-bg-container:    #141414;
+  --smena-bg-elevated:     #1f1f1f;
+
+  --smena-border:          #424242;
+  --smena-border-secondary:#303030;
+
+  --smena-fill:            rgba(255, 255, 255, 0.18);
+  --smena-fill-secondary:  rgba(255, 255, 255, 0.12);
+
+  --background: #141414;
+  --foreground: rgba(255, 255, 255, 0.85);
+  --card: #1f1f1f;
+  --card-foreground: rgba(255, 255, 255, 0.85);
+  --popover: #1f1f1f;
+  --popover-foreground: rgba(255, 255, 255, 0.85);
+  --primary: #4096ff;
+  --primary-foreground: #ffffff;
+  --secondary: #1f1f1f;
+  --secondary-foreground: rgba(255, 255, 255, 0.85);
+  --muted: #1f1f1f;
+  --muted-foreground: rgba(255, 255, 255, 0.45);
+  --accent: #111d2c;
+  --accent-foreground: #69b1ff;
+  --destructive: #ff7875;
+  --border: #424242;
+  --input: #424242;
+  --ring: #4096ff;
+  --sidebar: #1f1f1f;
+  --sidebar-foreground: rgba(255, 255, 255, 0.85);
+  --sidebar-primary: #4096ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #111d2c;
+  --sidebar-accent-foreground: #69b1ff;
+  --sidebar-border: #424242;
+  --sidebar-ring: #4096ff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  }
+}

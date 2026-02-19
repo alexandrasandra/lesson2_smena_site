@@ -1,4 +1,0 @@
-{
-  "buildCommand": "cd smena-ds && npm install && npm run build",
-  "outputDirectory": "smena-ds/.next"
-}

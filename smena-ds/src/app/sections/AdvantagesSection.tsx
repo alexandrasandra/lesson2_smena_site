@@ -30,7 +30,7 @@ export function AdvantagesSection() {
       <div className="max-w-[1120px] mx-auto px-smena-base">
         <h2 className="text-smena-h2 font-bold text-smena-text mb-smena-xxs text-center">
           Подработка с комфортом,{' '}
-          <span className="text-smena-primary">без лишней бумажки</span>
+          <span className="text-smena-primary">без подачи бумажек</span>
         </h2>
         <p className="text-smena-lg text-smena-text-secondary mb-smena-xl text-center max-w-xl mx-auto">
           Мы сделали процесс поиска подработки максимально простым и удобным

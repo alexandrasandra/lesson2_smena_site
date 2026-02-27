@@ -1,75 +1,78 @@
 import { Check, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
-const CRITERIA = [
-  { label: 'Моментальные выплаты', smena: true, others: false },
-  { label: 'Официальное оформление', smena: true, others: true },
-  { label: 'Гибкий посменный график', smena: true, others: false },
-  { label: 'Карта смен рядом с домом', smena: true, others: false },
-  { label: 'Проверенные работодатели', smena: true, others: true },
-  { label: 'Без резюме и собеседований', smena: true, others: false },
-  { label: 'Поддержка 24/7', smena: true, others: false },
+const OLD_WAY = [
+  'Долгий поиск вакансий на сайтах',
+  'Нужно резюме и собеседования',
+  'Непрозрачные условия оплаты',
+  'Нет гарантий официального оформления',
+  'Привязка к одному работодателю',
 ]
 
-function CellIcon({ value }: { value: boolean }) {
-  return value ? (
-    <div className="w-6 h-6 rounded-full bg-smena-success-bg flex items-center justify-center mx-auto">
-      <Check size={14} className="text-smena-success" strokeWidth={3} />
-    </div>
-  ) : (
-    <div className="w-6 h-6 rounded-full bg-smena-error-bg flex items-center justify-center mx-auto">
-      <X size={14} className="text-smena-error" strokeWidth={3} />
-    </div>
-  )
-}
+const SMENA_WAY = [
+  'Смены рядом с домом за 2 минуты',
+  'Без резюме — начни работать сразу',
+  'Прозрачная оплата после каждой смены',
+  'Официальное оформление по ТК РФ',
+  'Гибкий график и выбор работодателей',
+]
 
 export function ComparisonSection() {
   return (
     <section className="py-16 md:py-20 bg-smena-bg-layout">
-      <div className="max-w-[720px] mx-auto px-smena-base">
+      <div className="max-w-[900px] mx-auto px-smena-base">
         <h2 className="text-smena-h2 font-bold text-smena-text mb-smena-xxs text-center">
-          Забудьте о сложностях с{' '}
-          <span className="text-smena-primary">Навигатор подработки</span>
+          Забудьте о сложностях в{' '}
+          <span className="text-smena-primary">поиске подработки</span>
         </h2>
         <p className="text-smena-lg text-smena-text-secondary mb-smena-xl text-center">
-          Сравните возможности Smena App с другими платформами
+          Сравните старый подход с приложением Smena
         </p>
 
-        <div className="rounded-smena-lg border border-smena-border overflow-hidden bg-smena-bg-container">
-          <table className="w-full">
-            <thead>
-              <tr className="bg-smena-primary-bg">
-                <th className="text-left text-smena-base font-semibold text-smena-text px-smena-base py-smena-sm" />
-                <th className="text-center text-smena-base font-bold text-smena-primary px-smena-sm py-smena-sm w-[100px]">
-                  Smena App
-                </th>
-                <th className="text-center text-smena-base font-semibold text-smena-text-secondary px-smena-sm py-smena-sm w-[100px]">
-                  Другие
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {CRITERIA.map((row, i) => (
-                <tr
-                  key={row.label}
-                  className={cn(
-                    'border-t border-smena-border-secondary',
-                    i % 2 === 1 && 'bg-smena-fill-secondary'
-                  )}
-                >
-                  <td className="text-smena-base text-smena-text px-smena-base py-smena-sm">
-                    {row.label}
-                  </td>
-                  <td className="px-smena-sm py-smena-sm">
-                    <CellIcon value={row.smena} />
-                  </td>
-                  <td className="px-smena-sm py-smena-sm">
-                    <CellIcon value={row.others} />
-                  </td>
-                </tr>
+        <div className="grid md:grid-cols-2 gap-smena-base">
+          {/* Old way */}
+          <div className="bg-smena-bg-container rounded-smena-lg border border-smena-border p-smena-lg shadow-smena-card">
+            <div className="flex items-center gap-smena-xs mb-smena-base">
+              <div className="w-8 h-8 rounded-full bg-smena-error-bg flex items-center justify-center">
+                <X size={16} className="text-smena-error" strokeWidth={3} />
+              </div>
+              <h3 className="text-smena-lg font-bold text-smena-text">Старый способ</h3>
+            </div>
+            <ul className="flex flex-col gap-smena-sm">
+              {OLD_WAY.map((item) => (
+                <li key={item} className="flex items-start gap-smena-xs">
+                  <div className="w-5 h-5 rounded-full bg-smena-error-bg flex items-center justify-center shrink-0 mt-0.5">
+                    <X size={12} className="text-smena-error" strokeWidth={3} />
+                  </div>
+                  <span className="text-smena-base text-smena-text-secondary">{item}</span>
+                </li>
               ))}
-            </tbody>
-          </table>
+            </ul>
+          </div>
+
+          {/* Smena way */}
+          <div className="bg-smena-bg-container rounded-smena-lg border-2 border-smena-primary p-smena-lg shadow-smena-card relative">
+            <div className="absolute -top-3 right-smena-base">
+              <span className="bg-smena-primary text-white text-smena-sm font-semibold px-3 py-1 rounded-full">
+                Рекомендуем
+              </span>
+            </div>
+            <div className="flex items-center gap-smena-xs mb-smena-base">
+              <div className="w-8 h-8 rounded-full bg-smena-success-bg flex items-center justify-center">
+                <Check size={16} className="text-smena-success" strokeWidth={3} />
+              </div>
+              <h3 className="text-smena-lg font-bold text-smena-primary">В приложении Smena app</h3>
+            </div>
+            <ul className="flex flex-col gap-smena-sm">
+              {SMENA_WAY.map((item) => (
+                <li key={item} className="flex items-start gap-smena-xs">
+                  <div className="w-5 h-5 rounded-full bg-smena-success-bg flex items-center justify-center shrink-0 mt-0.5">
+                    <Check size={12} className="text-smena-success" strokeWidth={3} />
+                  </div>
+                  <span className="text-smena-base text-smena-text">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
